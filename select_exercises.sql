@@ -5,11 +5,13 @@ SELECT COUNT(*) FROM albums;
 SELECT COUNT(DISTINCT artist) FROM albums;
 
 -- What is the primary key for the albums table? Cmd show "id" id Primary Key
-SHOW CREATE TABLE albums;
+SHOW CREATE TABLE albums; 
+SHOW KEYS FROM albums WHERE key_name = 'PRIMARY'
 
 -- What is the oldest release date for any album in the albums table? What is the most recent release date?
 SELECT * FROM albums WHERE release_date = (SELECT MIN(release_date) FROM albums);
 SELECT * FROM albums WHERE release_date = (SELECT MAX(release_date) FROM albums);
+ORDER BY release_date ASC;
 
 -- The name of all albums by Pink Floyd
 SELECT artist, name FROM albums WHERE artist = 'Pink Floyd';
